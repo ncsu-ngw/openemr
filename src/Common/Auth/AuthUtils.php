@@ -329,7 +329,7 @@ class AuthUtils
                 // Utilize this during logins (and not during standard password checks within openemr such as esign)
                 $this->incrementIpLoginFailedCounter($ip['ip_string']);
             }
-            EventAuditLogger::instance()->newEvent($event, $username, '', 0, $beginLog . ": " . $ip['ip_string'] . ". user not found");
+            EventAuditLogger::instance()->newEvent($event, $username, '', 0, $beginLog . ": " . $ip['ip_string']);
             $this->clearFromMemory($password);
             $this->preventTimingAttack();
             return false;
@@ -379,7 +379,7 @@ class AuthUtils
                 // Utilize this during logins (and not during standard password checks within openemr such as esign)
                 $this->incrementIpLoginFailedCounter($ip['ip_string']);
             }
-            EventAuditLogger::instance()->newEvent($event, $username, $authGroup, 0, $beginLog . ": " . $ip['ip_string'] . ". user credentials not found");
+            EventAuditLogger::instance()->newEvent($event, $username, $authGroup, 0, $beginLog . ": " . $ip['ip_string']);
             $this->clearFromMemory($password);
             $this->preventTimingAttack();
             return false;
@@ -435,7 +435,7 @@ class AuthUtils
                     $this->incrementLoginFailedCounter($username);
                     $this->incrementIpLoginFailedCounter($ip['ip_string']);
                 }
-                EventAuditLogger::instance()->newEvent($event, $username, $authGroup, 0, $beginLog . ": " . $ip['ip_string'] . ". user password incorrect");
+                EventAuditLogger::instance()->newEvent($event, $username, $authGroup, 0, $beginLog . ": " . $ip['ip_string']);
                 $this->clearFromMemory($password);
                 return false;
             }
